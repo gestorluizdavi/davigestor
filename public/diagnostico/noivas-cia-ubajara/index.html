@@ -318,7 +318,10 @@ function waButton(text, label, ghost) {
 
 async function sendToSheet() {
   // text/plain evita a verificação de CORS do navegador; o Apps Script lê o corpo como JSON.
-  await fetch(SHEET_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(payload()) });
+  // Lê a resposta para confirmar que a linha foi gravada; se o script falhar, cai no WhatsApp.
+  const r = await fetch(SHEET_URL, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(payload()) });
+  const j = await r.json();
+  if (!j || j.ok !== true) throw new Error("planilha");
 }
 
 function end() {
@@ -331,7 +334,7 @@ function end() {
     return;
   }
   const nome = fmt(answers.nome).split(" ")[0];
-  if (!SHEET_URL) return endWhatsApp(nome, false);
+  if (!SHEET_URL) return endWhatsApp(nome);
   if (sent) return endDone(nome);
 
   stage.append(el("section", { class: "screen" },
@@ -340,37 +343,26 @@ function end() {
     el("div", { class: "sending" }, el("span", { class: "spinner", "aria-hidden": "true" }), "Só um instante.")));
   sendToSheet()
     .then(() => { sent = true; save(); if (step >= Q.length) { stage.replaceChildren(); endDone(nome); } })
-    .catch(() => { if (step >= Q.length) { stage.replaceChildren(); endWhatsApp(nome, true); } });
+    .catch(() => { if (step >= Q.length) { stage.replaceChildren(); endWhatsApp(nome); } });
 }
 
 function endDone(nome) {
+  bar.style.width = "100%";
+  backBtn.hidden = true;
   stage.append(el("section", { class: "screen" },
     el("p", { class: "eyebrow" }, el("span", { class: "rule" }), "Recebido"),
     el("h1", {}, el("span", { class: "dim", text: nome ? `Valeu, ${nome}.` : "Valeu." }), el("br"), "Já estou com ", el("span", { class: "it", text: "suas respostas." })),
-    el("p", { class: "lead", text: "Vou analisar tudo e te mando a proposta pelo WhatsApp. Se quiser adiantar a conversa, é só me chamar." }),
-    el("div", { class: "actions" },
-      waButton(`Oi, Davi! Aqui é ${nome || "da Noivas & Cia"}, acabei de responder o diagnóstico.`, "Falar comigo no WhatsApp", true)),
-    el("div", { class: "actions" }, el("button", { class: "link", type: "button", text: "Revisar respostas", onclick: () => go(0) }))));
+    el("p", { class: "lead", text: "Vou analisar tudo e te mando a proposta pelo WhatsApp." })));
 }
 
-function endWhatsApp(nome, failed) {
-  const msg = message();
-  const wa = waButton(msg, "Enviar pelo WhatsApp", false);
-  const pre = el("pre", { class: "summary", tabindex: "0", text: msg });
-  const status = el("p", { class: "note", role: "status", text: "Se o WhatsApp não abrir, copie as respostas e cole na conversa comigo." });
-  const copy = el("button", { class: "btn ghost", type: "button", text: "Copiar respostas" });
-  copy.addEventListener("click", async () => {
-    try { await navigator.clipboard.writeText(msg); status.textContent = "Copiado. É só colar na conversa comigo."; }
-    catch (e) { const r = document.createRange(); r.selectNodeContents(pre); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); status.textContent = "Texto selecionado. Copie e cole na conversa comigo."; }
-  });
+// Só aparece se a planilha não responder: um botão, sem mostrar as respostas na tela.
+function endWhatsApp(nome) {
+  const wa = waButton(message(), "Enviar pelo WhatsApp", false);
   stage.append(el("section", { class: "screen" },
     el("p", { class: "eyebrow" }, el("span", { class: "rule" }), "Última etapa"),
-    el("h1", {}, el("span", { class: "dim", text: nome ? `Valeu, ${nome}.` : "Valeu." }), el("br"), "Agora é só ", el("span", { class: "it", text: "me enviar." })),
-    el("p", { class: "lead", text: failed
-      ? "Não consegui registrar as respostas por aqui. Envie pelo WhatsApp: a mensagem já abre escrita."
-      : "O WhatsApp abre com as respostas já escritas. Confira e aperte enviar." }),
-    el("div", { class: "actions" }, wa, copy),
-    status, pre));
+    el("h1", {}, el("span", { class: "dim", text: nome ? `Valeu, ${nome}.` : "Valeu." }), el("br"), "Falta só ", el("span", { class: "it", text: "um toque." })),
+    el("p", { class: "lead", text: "Toque no botão para me enviar as respostas pelo WhatsApp." }),
+    el("div", { class: "actions" }, wa)));
   wa.focus({ preventScroll: true });
 }
 
