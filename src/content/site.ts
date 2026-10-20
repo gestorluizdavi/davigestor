@@ -8,7 +8,7 @@ export const site = {
   name: "Luiz Davi",
   role: "Gestor de Tráfego & Performance",
   tagline: "Gestão de Tráfego Pago & Estratégia Digital",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://luizdavi.com.br",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://bio.luizdavi.com.br",
   description:
     "Luiz Davi, gestor de tráfego pago para nutricionistas e profissionais da saúde. Estratégias de Meta Ads e Google Ads pensadas para atrair, conectar e converter pacientes.",
 

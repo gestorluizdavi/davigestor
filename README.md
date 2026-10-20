@@ -63,7 +63,7 @@ Todos os eventos passam por `src/lib/analytics.ts` e vão para o `dataLayer` (GT
 
 **Origem (UTM):** `utm_*`, `fbclid` e `gclid` da primeira página vista ficam salvos na sessão. Quando existem, a mensagem do WhatsApp termina com uma referência curta, ex.: `(ref: instagram / bio)`, para você saber de onde veio cada conversa. Desligue em `site.whatsapp.appendOrigin`.
 
-Para o link da bio, use por exemplo: `https://seudominio.com.br/?utm_source=instagram&utm_medium=bio`.
+Para o link da bio, use por exemplo: `https://bio.luizdavi.com.br/?utm_source=instagram&utm_medium=bio`.
 
 **Se usar GTM**, instale Pixel e GA4 dentro dele e deixe as outras duas variáveis vazias, para não duplicar disparos. Crie gatilhos de "Evento personalizado" com os nomes da tabela.
 
