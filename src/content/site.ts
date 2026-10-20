@@ -19,7 +19,7 @@ export const site = {
 
   whatsapp: {
     // DDI + DDD + número, só dígitos. Vazio = abre o WhatsApp para a pessoa escolher o contato.
-    number: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "",
+    number: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "5588993014953",
     // Mensagem inicial por botão. A chave é o "local" do clique, também enviado nos eventos.
     messages: {
       default:
