@@ -3,8 +3,12 @@ import type { NextConfig } from "next";
 // Versão estática (pasta /out) para Cloudflare Pages ou qualquer hospedagem sem Node.
 // Ative com `npm run build:static` ou com a variável STATIC_EXPORT=1.
 // Na Vercel/Netlify, use o `npm run build` normal.
+// No Cloudflare Pages (variável CF_PAGES) a versão estática é ativada automaticamente.
 const isExport =
-  process.env.STATIC_EXPORT === "1" || process.env.npm_lifecycle_event === "build:static";
+  process.env.STATIC_EXPORT === "1" ||
+  process.env.CF_PAGES === "1" ||
+  process.env.WORKERS_CI === "1" ||
+  process.env.npm_lifecycle_event === "build:static";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,

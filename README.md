@@ -16,11 +16,13 @@ npm run dev                  # http://localhost:3000
 
 **Netlify:** importe o repositório; comando de build `npm run build`. O Netlify detecta o Next.js automaticamente.
 
-**Cloudflare Pages (via GitHub):** em Workers & Pages → Create → Pages → conecte o repositório e use:
+**Cloudflare Workers (via GitHub, fluxo padrão do Cloudflare hoje):** o arquivo `wrangler.jsonc` já faz o build e aponta a pasta `out`. Em Workers & Pages → Create application → Import a repository, escolha o repositório e mantenha o deploy command `npx wrangler deploy`. O `package.json` e o `wrangler.jsonc` precisam estar na raiz do repositório (ou informe a pasta em *Root directory*). O campo `name` do `wrangler.jsonc` deve ser igual ao nome do projeto no Cloudflare.
+
+**Cloudflare Pages (via GitHub):** em Workers & Pages → Create application → Pages → Import an existing Git repository, escolha o repositório e use:
 - Framework preset: Next.js (Static HTML Export)
-- Build command: `npm run build:static`
+- Build command: `npm run build:static` (o `npx next build` sugerido pelo preset também funciona; no Cloudflare a versão estática é ativada sozinha)
 - Build output directory: `out`
-- Variáveis de ambiente: as do `.env.example` (são lidas no momento do build; depois de alterar, faça um novo deploy)
+- Variáveis de ambiente: as do `.env.example`. Elas entram no site no momento do build; depois de alterar, faça um novo deploy.
 
 **Cloudflare Pages (arrastar e soltar):** rode `npm run build:static` no seu computador, com o `.env.local` preenchido, e envie a pasta `out/` em Create → Pages → Upload assets.
 
