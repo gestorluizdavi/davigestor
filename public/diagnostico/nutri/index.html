@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Diagnóstico para Nutricionistas | Luiz Davi</title>
+<meta name="description" content="8 perguntas rápidas para saber se consigo encher a agenda do seu consultório.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#101114">
+<meta property="og:title" content="Diagnóstico para Nutricionistas | Luiz Davi">
+<meta property="og:description" content="8 perguntas rápidas, cerca de 2 minutos.">
+<meta property="og:image" content="https://bio.luizdavi.com.br/og.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="preload" href="../fonts/Manrope-Variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/Inter-Variable.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face { font-family: "Manrope"; src: url("../fonts/Manrope-Variable.woff2") format("woff2"); font-weight: 200 800; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("../fonts/Inter-Variable.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Instrument Serif"; src: url("../fonts/InstrumentSerif-Italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+
+/* Layout: uma pergunta por tela numa coluna estreita, marca no topo e linha azul de progresso, como em bio.luizdavi.com.br. */
+:root {
+  --bg: #101114;
+  --surface: #17181C;
+  --ink: #F5F5F2;
+  --soft: #A9ACB2;
+  --muted: #888B91;
+  --line: rgba(245, 245, 242, .12);
+  --accent: #5278FF;
+  --accent-ink: #F5F5F2;
+  --accent-soft: rgba(82, 120, 255, .14);
+  --head: "Manrope", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --serif: "Instrument Serif", Georgia, serif;
+  color-scheme: dark;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #F5F5F2; --surface: #FFFFFF; --ink: #101114; --soft: #5E6168; --muted: #6E7178;
+    --line: rgba(16, 17, 20, .12); --accent: #3E63F0; --accent-ink: #FFFFFF; --accent-soft: rgba(62, 99, 240, .10);
+    color-scheme: light;
+  }
+}
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { height: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: var(--body); font-size: 16px; line-height: 1.55;
+  -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: 100%;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.top-in { max-width: 600px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding-block: 20px 16px; }
+.brand { font-family: var(--head); font-weight: 600; font-size: 19px; letter-spacing: -.02em; color: var(--ink); text-decoration: none; }
+.count { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.track { max-width: 600px; margin: 0 auto; height: 2px; background: var(--line); border-radius: 2px; overflow: hidden; }
+.fill { height: 100%; width: 0; background: var(--accent); transition: width .35s ease; }
+
+.shell {
+  min-height: calc(100% - 80px); display: flex; flex-direction: column;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 32px 40px;
+}
+.stage { flex: 1; width: 100%; max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; justify-content: center; }
+.screen { display: flex; flex-direction: column; gap: 22px; animation: rise .3s ease both; }
+@keyframes rise { from { opacity: .001; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .screen { animation: none; } .fill { transition: none; } }
+
+.eyebrow { display: flex; align-items: center; gap: 12px; margin: 0; font-size: 12px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--soft); }
+.eyebrow .n { color: var(--accent); font-variant-numeric: tabular-nums; letter-spacing: .12em; }
+.eyebrow .rule { width: 32px; height: 1px; background: var(--accent); flex: none; }
+h1, h2 { font-family: var(--head); font-weight: 600; letter-spacing: -.035em; line-height: 1.08; margin: 0; text-wrap: balance; }
+h1 { font-size: clamp(36px, 8vw, 52px); }
+h2 { font-size: clamp(26px, 5.6vw, 36px); }
+.dim { color: var(--muted); }
+.it { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -.01em; }
+.lead { color: var(--soft); margin: 0; max-width: 32em; font-size: 17px; }
+.hint { color: var(--soft); font-size: 14px; margin: -8px 0 0; }
+
+.options { display: flex; flex-direction: column; gap: 8px; }
+.opt {
+  display: flex; align-items: center; gap: 14px; width: 100%; text-align: left;
+  font: inherit; font-size: 16px; color: var(--ink);
+  background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+  padding: 14px 16px; cursor: pointer; transition: border-color .15s, background .15s;
+  -webkit-tap-highlight-color: transparent;
+}
+@media (hover: hover) { .opt:hover { border-color: var(--accent); } }
+.key { flex: none; width: 26px; height: 26px; border-radius: 999px; display: grid; place-items: center; font-size: 12px; font-weight: 600; color: var(--muted); border: 1px solid var(--line); }
+.opt[aria-pressed="true"], .opt[aria-checked="true"] { border-color: var(--accent); background: var(--accent-soft); }
+.opt[aria-pressed="true"] .key, .opt[aria-checked="true"] .key { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.opt-label { flex: 1; min-width: 0; }
+
+.field {
+  width: 100%; font: inherit; font-family: var(--head); font-size: 24px; font-weight: 500; letter-spacing: -.02em;
+  color: var(--ink); background: transparent; border: none; border-bottom: 1px solid var(--line); border-radius: 0; padding: 10px 0;
+}
+.field:focus { outline: none; border-bottom-color: var(--accent); }
+.field::placeholder { color: var(--muted); }
+
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.btn {
+  font: inherit; font-weight: 600; font-size: 16px; text-decoration: none;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  border-radius: 999px; padding: 15px 26px; cursor: pointer;
+  background: var(--accent); color: var(--accent-ink); border: 1px solid var(--accent);
+}
+.btn[disabled] { opacity: .4; cursor: not-allowed; }
+.btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn svg { width: 18px; height: 18px; flex: none; }
+.press { color: var(--muted); font-size: 13px; }
+.link { font: inherit; font-size: 14px; color: var(--muted); background: none; border: none; padding: 6px 0; cursor: pointer; }
+.link:hover { color: var(--ink); }
+.opt:focus-visible, .btn:focus-visible, .link:focus-visible, .field:focus-visible, .brand:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.meta { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font-size: 13px; color: var(--soft); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; }
+.summary { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; max-height: 260px; overflow: auto; font-size: 14px; color: var(--soft); white-space: pre-wrap; word-break: break-word; font-family: var(--body); }
+.note { font-size: 13px; color: var(--muted); margin: 0; }
+.err { color: var(--accent); font-size: 13px; font-weight: 600; min-height: 1.3em; margin: -6px 0 0; }
+.spinner { width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--line); border-top-color: var(--accent); animation: spin .8s linear infinite; flex: none; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.sending { display: flex; align-items: center; gap: 12px; color: var(--soft); }
+.foot { max-width: 600px; width: 100%; margin: 0 auto; padding-top: 28px; display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 13px; color: var(--muted); }
+</style>
+
+<body>
+<header class="top">
+  <div class="top-in"><a class="brand" href="https://bio.luizdavi.com.br/" aria-label="Luiz Davi, página inicial">Luiz Davi</a><span class="count" id="count"></span></div>
+  <div class="track" aria-hidden="true"><div class="fill" id="bar"></div></div>
+</header>
+
+<div class="shell">
+  <main class="stage" id="stage" aria-live="polite"></main>
+  <footer class="foot">
+    <span>Gestor de Tráfego &amp; Performance</span>
+    <button class="link" id="backBtn" type="button" hidden>← Voltar</button>
+  </footer>
+</div>
+
+<script>
+// ---------- Ajustes rápidos ----------
+// Planilha "Diagnósticos — Respostas" (Apps Script). Vazio = não grava.
+const SHEET_URL = "https://script.google.com/macros/s/AKfycbxLHeyM-Mdf-5UAGsVIqZWh-qDzUEPfQgr_rfD4PVfVAjBVIcv2wGdqj4BVrLusfbc/exec";
+// Meu WhatsApp, que recebe as nutris qualificadas (55 + DDD + número).
+const DAVI_WHATSAPP = "5588992161243";
+// Botão da tela de quem não se qualifica.
+const NO_FIT_LINK = "https://bio.luizdavi.com.br/";
+const NO_FIT_LABEL = "Conhecer mais";
+const FORM_NAME = "Diagnóstico Nutri";
+
+// stop: respostas que encerram o formulário na tela "Obrigado por responder!".
+const Q = [
+  { id: "nome", label: "Nome", type: "name", title: ["Qual seu", "nome?"], placeholder: "Digite aqui" },
+  { id: "whatsapp", label: "WhatsApp", type: "phone", title: ["{nome}, qual o seu", "WhatsApp", "com DDD?"], placeholder: "(88) 99999-9999" },
+  { id: "instagram", label: "Instagram", type: "insta", title: ["Qual seu", "@", "do Instagram?"], placeholder: "@seuperfil" },
+  { id: "nutri", label: "É nutricionista", type: "single", title: ["Você atua como", "nutricionista?"],
+    options: ["Sim, tenho consultório próprio", "Sim, mas atendo em clínica de terceiros", "Não sou nutricionista"],
+    stop: ["Não sou nutricionista"] },
+  { id: "faturamento", label: "Faturamento médio mensal", type: "single", title: ["Qual o faturamento médio mensal do seu consultório nos", "últimos 3 meses?"],
+    options: ["Ainda não faturo", "Até R$ 3 mil", "R$ 3 mil a R$ 7 mil", "R$ 7 mil a R$ 15 mil", "Acima de R$ 15 mil"],
+    stop: ["Ainda não faturo", "Até R$ 3 mil"] },
+  { id: "investimento", label: "Investimento mensal (gestão + anúncios)", type: "single", title: ["Quanto você pode investir por mês para", "crescer", "o consultório, somando gestão e anúncios?"],
+    options: ["Menos de R$ 1.000", "R$ 1.000 a R$ 2.000", "R$ 2.000 a R$ 4.000", "Acima de R$ 4.000"],
+    stop: ["Menos de R$ 1.000"] },
+  { id: "origem", label: "Origem dos pacientes", type: "multi", title: ["Hoje, de onde vêm", "seus pacientes?"], hint: "Pode marcar mais de uma.",
+    options: ["Indicação", "Instagram (sem anúncio)", "Anúncios pagos", "Convênio ou clínica parceira", "Google"] },
+  { id: "ticket", label: "Valor médio do acompanhamento", type: "single", title: ["Qual o valor médio do seu", "acompanhamento?"],
+    options: ["Até R$ 200", "R$ 200 a R$ 400", "R$ 400 a R$ 700", "Acima de R$ 700"] }
+];
+
+const KEYS = "ABCDEFGHIJ";
+const STORE = "diag-nutri-v1";
+const stage = document.getElementById("stage");
+const bar = document.getElementById("bar");
+const count = document.getElementById("count");
+const backBtn = document.getElementById("backBtn");
+
+// UTMs do anúncio, guardadas na primeira visita.
+const utm = {};
+try {
+  const p = new URLSearchParams(location.search);
+  ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach(k => { if (p.get(k)) utm[k] = p.get(k); });
+} catch (e) {}
+
+let step = -1, answers = {}, stopAt = null, sentKey = "";
+try {
+  const s = JSON.parse(localStorage.getItem(STORE) || "null");
+  if (s && typeof s === "object") {
+    answers = s.answers || {}; step = Math.min(s.step ?? -1, Q.length); stopAt = s.stopAt || null; sentKey = s.sentKey || "";
+    if (!Object.keys(utm).length && s.utm) Object.assign(utm, s.utm);
+  }
+} catch (e) {}
+function save() { try { localStorage.setItem(STORE, JSON.stringify({ answers, step, stopAt, sentKey, utm })); } catch (e) {} }
+
+function el(tag, attrs = {}, ...kids) {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (k === "class") n.className = v;
+    else if (k === "text") n.textContent = v;
+    else if (k.startsWith("on")) n.addEventListener(k.slice(2), v);
+    else if (v !== false && v != null) n.setAttribute(k, v === true ? "" : v);
+  }
+  for (const c of kids) if (c != null && c !== false) n.append(c);
+  return n;
+}
+const firstName = () => (answers.nome || "").trim().split(/\s+/)[0] || "";
+// Partes do título: [normal, itálico, normal]; {nome} vira o primeiro nome.
+function title(tag, parts, id) {
+  const h = el(tag, id ? { id } : {});
+  parts.forEach((p, i) => {
+    p = p.replace("{nome}", firstName() || "Perfeito");
+    if (i > 0) h.append(" ");
+    h.append(i === 1 ? el("span", { class: "it", text: p }) : p);
+  });
+  return h;
+}
+const pad = n => String(n).padStart(2, "0");
+const has = q => { const a = answers[q.id]; return Array.isArray(a) ? a.length > 0 : typeof a === "string" && a.trim() !== ""; };
+
+function go(n) { step = Math.max(-1, Math.min(n, Q.length)); save(); render(); window.scrollTo(0, 0); }
+const next = () => go(step + 1);
+
+function render() {
+  stage.replaceChildren();
+  bar.style.width = (step < 0 ? 0 : Math.round(Math.min(step, Q.length) / Q.length * 100)) + "%";
+  count.textContent = step >= 0 && step < Q.length ? `${pad(step + 1)} / ${pad(Q.length)}` : "";
+  backBtn.hidden = step < 0;
+  if (step < 0) return welcome();
+  if (step >= Q.length) return end();
+  question(Q[step]);
+}
+
+function welcome() {
+  const resume = Object.keys(answers).length > 0;
+  stage.append(el("section", { class: "screen" },
+    el("p", { class: "eyebrow" }, el("span", { class: "rule" }), "Diagnóstico · Nutricionistas"),
+    el("h1", {}, el("span", { class: "dim", text: "Antes de começarmos," }), el("br"), "precisamos entender ", el("span", { class: "it", text: "o seu momento." })),
+    el("p", { class: "lead", text: "Algumas perguntas rápidas para eu saber se consigo te ajudar a encher a agenda do consultório." }),
+    el("div", { class: "meta" }, el("span", { class: "chip", text: `${Q.length} perguntas` }), el("span", { class: "chip", text: "2 minutos" })),
+    el("div", { class: "actions" },
+      el("button", { class: "btn", type: "button", id: "startBtn", onclick: () => go(resume ? firstOpen() : 0), text: resume ? "Continuar ↗" : "Começar ↗" }),
+      resume ? el("button", { class: "link", type: "button", onclick: () => { answers = {}; stopAt = null; sentKey = ""; go(0); }, text: "Recomeçar" }) : null)
+  ));
+  document.getElementById("startBtn").focus({ preventScroll: true });
+}
+function firstOpen() {
+  if (stopAt) return Q.length;
+  const i = Q.findIndex(q => !has(q)); return i === -1 ? Q.length : i;
+}
+
+// ---------- Campos de texto ----------
+function maskPhone(v) {
+  const d = v.replace(/\D/g, "").replace(/^55(?=\d{10,11}$)/, "").slice(0, 11);
+  if (d.length <= 2) return d.length ? `(${d}` : "";
+  if (d.length <= 6) return `(${d.slice(0, 2)}) ${d.slice(2)}`;
+  if (d.length <= 10) return `(${d.slice(0, 2)}) ${d.slice(2, 6)}-${d.slice(6)}`;
+  return `(${d.slice(0, 2)}) ${d.slice(2, 7)}-${d.slice(7)}`;
+}
+const TEXT = {
+  name:  { attrs: { type: "text", autocomplete: "name", autocapitalize: "words" }, clean: v => v.trim().replace(/\s+/g, " "), check: v => v ? "" : "Escreva seu nome para continuar." },
+  phone: { attrs: { type: "tel", inputmode: "tel", autocomplete: "tel-national" }, live: maskPhone, clean: maskPhone,
+           check: v => { const n = v.replace(/\D/g, "").length; return n === 10 || n === 11 ? "" : "Digite o WhatsApp com DDD, ex.: (88) 99999-9999."; } },
+  insta: { attrs: { type: "text", autocomplete: "off", autocapitalize: "none", spellcheck: "false" },
+           clean: v => { const u = v.trim().replace(/^(https?:\/\/)?(www\.)?instagram\.com\//i, "").replace(/[/?].*$/, "").replace(/^@+/, "").replace(/\s+/g, ""); return u ? "@" + u : ""; },
+           check: v => v.length > 1 ? "" : "Escreva seu @ para continuar." }
+};
+
+function question(q) {
+  const s = el("section", { class: "screen" },
+    el("p", { class: "eyebrow" }, el("span", { class: "n", text: pad(step + 1) }), el("span", { class: "rule" })),
+    title("h2", q.title, "qt-" + q.id));
+  if (q.hint) s.append(el("p", { class: "hint", text: q.hint }));
+  const err = el("p", { class: "err", id: "err-" + q.id, role: "alert" });
+
+  if (q.type === "single") {
+    const box = el("div", { class: "options", role: "group", "aria-labelledby": "qt-" + q.id });
+    q.options.forEach((o, i) => {
+      const b = el("button", { class: "opt", type: "button", "data-key": KEYS[i], "aria-pressed": answers[q.id] === o ? "true" : "false" },
+        el("span", { class: "key", "aria-hidden": "true", text: KEYS[i] }), el("span", { class: "opt-label", text: o }));
+      b.addEventListener("click", () => {
+        answers[q.id] = o;
+        if (q.stop && q.stop.includes(o)) stopAt = q.id;
+        else if (stopAt === q.id) stopAt = null;
+        save();
+        box.querySelectorAll(".opt").forEach(x => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
+        setTimeout(() => stopAt === q.id ? go(Q.length) : next(), 200);
+      });
+      box.append(b);
+    });
+    s.append(box);
+    stage.append(s);
+    (box.querySelector('[aria-pressed="true"]') || box.querySelector(".opt")).focus({ preventScroll: true });
+    return;
+  }
+
+  if (q.type === "multi") {
+    const chosen = new Set(Array.isArray(answers[q.id]) ? answers[q.id] : []);
+    const box = el("div", { class: "options", role: "group", "aria-labelledby": "qt-" + q.id });
+    const ok = el("button", { class: "btn", type: "button", text: "Continuar ↗", onclick: () => chosen.size ? next() : (err.textContent = "Marque pelo menos uma opção.") });
+    q.options.forEach((o, i) => {
+      const b = el("button", { class: "opt", type: "button", role: "checkbox", "data-key": KEYS[i], "aria-checked": chosen.has(o) ? "true" : "false" },
+        el("span", { class: "key", "aria-hidden": "true", text: KEYS[i] }), el("span", { class: "opt-label", text: o }));
+      b.addEventListener("click", () => {
+        chosen.has(o) ? chosen.delete(o) : chosen.add(o);
+        answers[q.id] = q.options.filter(x => chosen.has(x)); save();
+        b.setAttribute("aria-checked", chosen.has(o) ? "true" : "false");
+        ok.disabled = chosen.size === 0; err.textContent = "";
+      });
+      box.append(b);
+    });
+    ok.disabled = chosen.size === 0;
+    s.append(box, err, el("div", { class: "actions" }, ok));
+    stage.append(s);
+    box.querySelector(".opt").focus({ preventScroll: true });
+    return;
+  }
+
+  const t = TEXT[q.type];
+  const input = el("input", Object.assign({ class: "field", id: "f-" + q.id, placeholder: q.placeholder, "aria-labelledby": "qt-" + q.id, "aria-describedby": "err-" + q.id }, t.attrs));
+  input.value = answers[q.id] || "";
+  const submit = () => {
+    const v = t.clean(input.value); const m = t.check(v);
+    if (m) { err.textContent = m; input.focus(); return; }
+    answers[q.id] = v; input.value = v; save(); next();
+  };
+  input.addEventListener("input", () => {
+    if (t.live) { const c = t.live(input.value); if (c !== input.value) input.value = c; }
+    answers[q.id] = input.value; save(); err.textContent = "";
+  });
+  input.addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); submit(); } });
+  s.append(input, err, el("div", { class: "actions" },
+    el("button", { class: "btn", type: "button", text: "OK ↗", onclick: submit }),
+    el("span", { class: "press", text: "ou aperte Enter" })));
+  stage.append(s);
+  input.focus({ preventScroll: true });
+}
+
+// ---------- Envio ----------
+const fmt = v => Array.isArray(v) ? v.join(", ") : (v || "").trim();
+function payload(qualified) {
+  const p = { "Formulário": FORM_NAME };
+  Q.forEach(q => { p[q.label] = fmt(answers[q.id]); });
+  p["Qualificado"] = qualified ? "Sim" : "Não";
+  if (!qualified) p["Motivo"] = (Q.find(q => q.id === stopAt) || {}).label || "";
+  Object.assign(p, utm);
+  return p;
+}
+function sendToSheet(qualified) {
+  if (!SHEET_URL) return;
+  const body = JSON.stringify(payload(qualified));
+  if (body === sentKey) return; // mesma resposta já gravada
+  sentKey = body; save();
+  // text/plain + no-cors: o Apps Script lê o corpo como JSON e a página não espera resposta.
+  fetch(SHEET_URL, { method: "POST", mode: "no-cors", keepalive: true, headers: { "Content-Type": "text/plain;charset=utf-8" }, body }).catch(() => { sentKey = ""; save(); });
+}
+
+function waMessage() {
+  const l = [`Oi! Sou ${fmt(answers.nome)}, nutricionista${answers.instagram ? " (" + answers.instagram + ")" : ""}. Acabei de responder o seu diagnóstico e quero entender como você pode me ajudar a crescer o consultório.`, ""];
+  [["faturamento", "Faturamento"], ["investimento", "Posso investir"], ["ticket", "Valor do acompanhamento"]].forEach(([id, lb]) => { if (answers[id]) l.push(`${lb}: ${fmt(answers[id])}`); });
+  return l.join("\n");
+}
+const WA_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.2-.2-.5-.3Z"/></svg>';
+
+function end() {
+  bar.style.width = "100%";
+  const nome = firstName();
+  if (stopAt) { sendToSheet(false); return endNoFit(nome); }
+  const missing = Q.filter(q => !has(q));
+  if (missing.length) {
+    stage.append(el("section", { class: "screen" },
+      el("p", { class: "eyebrow" }, el("span", { class: "rule" }), "Quase lá"),
+      el("h2", {}, el("span", { class: "dim", text: missing.length === 1 ? "Falta 1 resposta." : `Faltam ${missing.length} respostas.` })),
+      el("div", { class: "actions" }, el("button", { class: "btn", type: "button", text: "Responder ↗", onclick: () => go(Q.indexOf(missing[0])) }))));
+    return;
+  }
+  sendToSheet(true);
+  const wa = el("a", { class: "btn", href: "https://wa.me/" + DAVI_WHATSAPP + "?text=" + encodeURIComponent(waMessage()), target: "_blank", rel: "noopener" });
+  wa.innerHTML = WA_ICON; wa.append("Falar comigo no WhatsApp");
+  stage.append(el("section", { class: "screen" },
+    el("p", { class: "eyebrow" }, el("span", { class: "rule" }), "Diagnóstico concluído"),
+    el("h1", {}, el("span", { class: "dim", text: nome ? `${nome}, suas respostas` : "Suas respostas" }), el("br"), "fazem sentido para ", el("span", { class: "it", text: "o que eu entrego." })),
+    el("p", { class: "lead", text: "Toque no botão para me chamar no WhatsApp. A mensagem já vai pronta, é só enviar." }),
+    el("div", { class: "actions" }, wa)));
+  wa.focus({ preventScroll: true });
+}
+
+function endNoFit(nome) {
+  stage.append(el("section", { class: "screen" },
+    el("p", { class: "eyebrow" }, el("span", { class: "rule" }), "Recebido"),
+    el("h1", {}, el("span", { class: "dim", text: nome ? `${nome},` : "" }), nome ? el("br") : null, "obrigado por ", el("span", { class: "it", text: "responder!" })),
+    el("p", { class: "lead", text: "Neste momento, o meu trabalho não é o melhor encaixe para você. Quando o consultório estiver em outra fase, vai ser um prazer conversar." }),
+    el("div", { class: "actions" }, el("a", { class: "btn ghost", href: NO_FIT_LINK, target: "_blank", rel: "noopener", text: NO_FIT_LABEL + " ↗" }))));
+}
+
+backBtn.addEventListener("click", () => {
+  if (step >= Q.length && stopAt) return go(Q.findIndex(q => q.id === stopAt));
+  go(step - 1);
+});
+document.addEventListener("keydown", e => {
+  if (e.ctrlKey || e.metaKey || e.altKey) return;
+  if (e.target && /INPUT|TEXTAREA/.test(e.target.tagName)) return;
+  if (step < 0 || step >= Q.length) return;
+  const q = Q[step]; if (!q.options) return;
+  const k = e.key.toUpperCase(), i = KEYS.indexOf(k);
+  if (k.length === 1 && i > -1 && i < q.options.length) { const b = stage.querySelector(`.opt[data-key="${k}"]`); if (b) { e.preventDefault(); b.click(); } }
+});
+render();
+</script>
+</body>
+</html>
