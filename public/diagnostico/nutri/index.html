@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Diagnóstico para Nutricionistas | Luiz Davi</title>
-<meta name="description" content="8 perguntas rápidas para saber se consigo encher a agenda do seu consultório.">
+<meta name="description" content="Responda e agende uma sessão diagnóstica para o seu consultório.">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#101114">
 <meta property="og:title" content="Diagnóstico para Nutricionistas | Luiz Davi">
-<meta property="og:description" content="8 perguntas rápidas, cerca de 2 minutos.">
+<meta property="og:description" content="Responda em 2 minutos e agende sua sessão diagnóstica.">
 <meta property="og:image" content="https://bio.luizdavi.com.br/og.jpg">
 <meta property="og:type" content="website">
 <link rel="icon" href="/icon.svg" type="image/svg+xml">
@@ -175,7 +175,9 @@ const Q = [
   { id: "origem", label: "Origem dos pacientes", type: "multi", title: ["Hoje, de onde vêm", "seus pacientes?"], hint: "Pode marcar mais de uma.",
     options: ["Indicação", "Instagram (sem anúncio)", "Anúncios pagos", "Convênio ou clínica parceira", "Google"] },
   { id: "ticket", label: "Valor médio do acompanhamento", type: "single", title: ["Qual o valor médio do seu", "acompanhamento?"],
-    options: ["Até R$ 200", "R$ 200 a R$ 400", "R$ 400 a R$ 700", "Acima de R$ 700"] }
+    options: ["Até R$ 200", "R$ 200 a R$ 400", "R$ 400 a R$ 700", "Acima de R$ 700"] },
+  { id: "periodo", label: "Melhor período para a sessão", type: "single", title: ["Qual o melhor período pra nossa", "sessão diagnóstica?"],
+    hint: "É uma conversa online comigo sobre o seu consultório.", options: ["Manhã", "Tarde", "Noite"] }
 ];
 
 const KEYS = "ABCDEFGHIJ";
@@ -243,9 +245,9 @@ function render() {
 function welcome() {
   const resume = Object.keys(answers).length > 0;
   stage.append(el("section", { class: "screen" },
-    el("p", { class: "eyebrow" }, el("span", { class: "rule" }), "Diagnóstico · Nutricionistas"),
+    el("p", { class: "eyebrow" }, el("span", { class: "rule" }), "Sessão diagnóstica · Nutricionistas"),
     el("h1", {}, el("span", { class: "dim", text: "Antes de começarmos," }), el("br"), "precisamos entender ", el("span", { class: "it", text: "o seu momento." })),
-    el("p", { class: "lead", text: "Algumas perguntas rápidas para eu saber se consigo te ajudar a encher a agenda do consultório." }),
+    el("p", { class: "lead", text: "Responda algumas perguntas rápidas. Se fizer sentido, você já agenda uma sessão diagnóstica comigo pra gente olhar o seu consultório e montar o plano para encher a agenda." }),
     el("div", { class: "meta" }, el("span", { class: "chip", text: `${Q.length} perguntas` }), el("span", { class: "chip", text: "2 minutos" })),
     el("div", { class: "actions" },
       el("button", { class: "btn", type: "button", id: "startBtn", onclick: () => go(resume ? firstOpen() : 0), text: resume ? "Continuar ↗" : "Começar ↗" }),
@@ -365,8 +367,8 @@ function sendToSheet(qualified) {
 }
 
 function waMessage() {
-  const l = [`Oi! Sou ${fmt(answers.nome)}, nutricionista${answers.instagram ? " (" + answers.instagram + ")" : ""}. Acabei de responder o seu diagnóstico e quero entender como você pode me ajudar a crescer o consultório.`, ""];
-  [["faturamento", "Faturamento"], ["investimento", "Posso investir"], ["ticket", "Valor do acompanhamento"]].forEach(([id, lb]) => { if (answers[id]) l.push(`${lb}: ${fmt(answers[id])}`); });
+  const l = [`Oi, Davi! Sou ${fmt(answers.nome)}, nutricionista${answers.instagram ? " (" + answers.instagram + ")" : ""}. Respondi o diagnóstico e quero agendar minha sessão diagnóstica.`, ""];
+  [["periodo", "Melhor período"], ["faturamento", "Faturamento"], ["investimento", "Posso investir"], ["ticket", "Valor do acompanhamento"]].forEach(([id, lb]) => { if (answers[id]) l.push(`${lb}: ${fmt(answers[id])}`); });
   return l.join("\n");
 }
 const WA_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.2-.2-.5-.3Z"/></svg>';
@@ -385,11 +387,11 @@ function end() {
   }
   sendToSheet(true);
   const wa = el("a", { class: "btn", href: "https://wa.me/" + DAVI_WHATSAPP + "?text=" + encodeURIComponent(waMessage()), target: "_blank", rel: "noopener" });
-  wa.innerHTML = WA_ICON; wa.append("Falar comigo no WhatsApp");
+  wa.innerHTML = WA_ICON; wa.append("Agendar minha sessão");
   stage.append(el("section", { class: "screen" },
-    el("p", { class: "eyebrow" }, el("span", { class: "rule" }), "Diagnóstico concluído"),
+    el("p", { class: "eyebrow" }, el("span", { class: "rule" }), "Próximo passo"),
     el("h1", {}, el("span", { class: "dim", text: nome ? `${nome}, suas respostas` : "Suas respostas" }), el("br"), "fazem sentido para ", el("span", { class: "it", text: "o que eu entrego." })),
-    el("p", { class: "lead", text: "Toque no botão para me chamar no WhatsApp. A mensagem já vai pronta, é só enviar." }),
+    el("p", { class: "lead", text: "Agora é marcar a sua sessão diagnóstica. Toque no botão pra me chamar no WhatsApp, a mensagem já vai pronta e a gente escolhe o dia." }),
     el("div", { class: "actions" }, wa)));
   wa.focus({ preventScroll: true });
 }
